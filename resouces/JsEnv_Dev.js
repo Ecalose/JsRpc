@@ -3,7 +3,7 @@ var rpc_client_id, HlClient = function (wsURL) {
     this.handlers = {
         _execjs: function (resolve, param) {
             try {
-                var fn = new Function('return (async () => {return ' + param + ' })()');
+                var fn = new Function('return (async () => { return (' + param + ') })()');
                 var result = fn();
                 if (result && typeof result.then === 'function') {
                     result.then(function(res) {
